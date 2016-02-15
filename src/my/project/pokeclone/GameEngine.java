@@ -9,6 +9,7 @@ public class GameEngine implements Runnable{
     private GameWindow gameWindow;
     private String title;
     private int width, height;
+    private Handler handler;
 
     public GameEngine(String title, int width, int height) {
         this.title = title;
@@ -77,6 +78,18 @@ public class GameEngine implements Runnable{
 
     private void init() {
         gameWindow = new GameWindow(title, width, height);
+        handler = new Handler(this);
+    }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public GameWindow getGameWindow() {
+        return gameWindow;
     }
 }
