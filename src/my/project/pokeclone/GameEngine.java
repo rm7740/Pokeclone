@@ -7,6 +7,14 @@ public class GameEngine implements Runnable{
     private boolean isRunning = false;
     private Thread thread;
     private GameWindow gameWindow;
+    private String title;
+    private int width, height;
+
+    public GameEngine(String title, int width, int height) {
+        this.title = title;
+        this.width = width;
+        this.height = height;
+    }
 
     public void start() {
         if (isRunning) return;
@@ -68,6 +76,7 @@ public class GameEngine implements Runnable{
     }
 
     private void init() {
-        gameWindow = new GameWindow("Pokeclone!", 240, 160);
+        gameWindow = new GameWindow(title, width, height);
+
     }
 }
