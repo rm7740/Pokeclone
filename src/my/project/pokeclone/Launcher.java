@@ -1,7 +1,8 @@
 package my.project.pokeclone;
 
-/**
- * Created by Dell on 15/2/2016.
- */
 public class Launcher {
+    public static void main(String[] args) {
+        GameEngine gameEngine = new GameEngine();
+        gameEngine.start();
+    }
 }
