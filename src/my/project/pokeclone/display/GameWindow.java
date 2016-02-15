@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameWindow {
+
     private JFrame frame;
     private Canvas canvas;
     private String title;

@@ -5,6 +5,7 @@ import my.project.pokeclone.input.KeyManager;
 public class Handler {
 
     private GameEngine gameEngine;
+    private GameMap gameMap;
 
     public Handler(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
@@ -20,5 +21,13 @@ public class Handler {
 
     public KeyManager getKeyManager() {
         return gameEngine.getKeyManager();
+    }
+
+    public GameMap getGameMap() {
+        return gameMap;
+    }
+
+    public void setGameMap(GameMap gameMap) {
+        this.gameMap = gameMap;
     }
 }
