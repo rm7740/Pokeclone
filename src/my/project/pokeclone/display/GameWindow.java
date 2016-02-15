@@ -1,5 +1,7 @@
 package my.project.pokeclone.display;
 
+import my.project.pokeclone.input.KeyManager;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -33,5 +35,6 @@ public class GameWindow {
         frame.add(canvas);
         frame.pack();
         frame.setVisible(true);
+        frame.addKeyListener(new KeyManager());
     }
 }
