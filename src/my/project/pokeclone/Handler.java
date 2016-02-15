@@ -19,6 +19,6 @@ public class Handler {
     }
 
     public KeyManager getKeyManager() {
-        return gameEngine.getGameWindow().getKeyManager();
+        return gameEngine.getKeyManager();
     }
 }
