@@ -10,6 +10,7 @@ public class GameWindow {
     private Canvas canvas;
     private String title;
     private int width, height;
+    private KeyManager keyManager;
 
     public GameWindow(String title, int width, int height) {
         this.title = title;
@@ -35,6 +36,10 @@ public class GameWindow {
         frame.add(canvas);
         frame.pack();
         frame.setVisible(true);
-        frame.addKeyListener(new KeyManager());
+        frame.addKeyListener(keyManager);
+    }
+
+    public KeyManager getKeyManager() {
+        return keyManager;
     }
 }
