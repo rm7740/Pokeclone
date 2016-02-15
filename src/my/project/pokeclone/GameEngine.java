@@ -1,6 +1,7 @@
 package my.project.pokeclone;
 
 import my.project.pokeclone.display.GameWindow;
+import my.project.pokeclone.input.KeyManager;
 
 public class GameEngine implements Runnable{
 
@@ -10,11 +11,14 @@ public class GameEngine implements Runnable{
     private String title;
     private int width, height;
     private Handler handler;
+    private KeyManager keyManager;
 
     public GameEngine(String title, int width, int height) {
         this.title = title;
         this.width = width;
         this.height = height;
+
+        keyManager = new KeyManager();
     }
 
     public void start() {
@@ -78,6 +82,7 @@ public class GameEngine implements Runnable{
 
     private void init() {
         gameWindow = new GameWindow(title, width, height);
+        gameWindow.getFrame().addKeyListener(keyManager);
         handler = new Handler(this);
     }
 
@@ -89,7 +94,7 @@ public class GameEngine implements Runnable{
         return height;
     }
 
-    public GameWindow getGameWindow() {
-        return gameWindow;
+    public KeyManager getKeyManager() {
+        return keyManager;
     }
 }
