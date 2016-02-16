@@ -4,12 +4,15 @@ import my.project.pokeclone.Handler;
 
 public abstract class LiveEntity extends Entity{
 
-    protected float speed;
-    protected float xMove, yMove;
+    protected int speed;
+    protected int xMove, yMove;
 
-    public LiveEntity(Handler handler, float x, float y, int width, int height, float speed) {
-        super(handler, x, y, width, height);
-        this.speed = speed;
+    public LiveEntity(Handler handler, int x, int y) {
+        super(handler, x, y);
+    }
+
+    public boolean checkEntityCollision(int x, int y) {
+        return false;
     }
 
     public void move() {
@@ -18,10 +21,10 @@ public abstract class LiveEntity extends Entity{
     }
 
     protected void moveY() {
-        y = yMove;
+        y += yMove;
     }
 
     protected void moveX() {
-        x = xMove;
+        x += xMove;
     }
 }
