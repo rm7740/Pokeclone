@@ -2,6 +2,10 @@ package my.project.pokeclone;
 
 import my.project.pokeclone.display.GameWindow;
 import my.project.pokeclone.input.KeyManager;
+import my.project.pokeclone.state.State;
+
+import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class GameEngine implements Runnable{
 
@@ -12,6 +16,8 @@ public class GameEngine implements Runnable{
     private int width, height;
     private Handler handler;
     private KeyManager keyManager;
+    private BufferStrategy bufferStrategy;
+    private Graphics graphics;
 
     public GameEngine(String title, int width, int height) {
         this.title = title;
@@ -73,11 +79,26 @@ public class GameEngine implements Runnable{
     }
 
     private void render() {
+        bufferStrategy = gameWindow.getCanvas().getBufferStrategy();
+        if(bufferStrategy == null){
+            gameWindow.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        graphics = bufferStrategy.getDrawGraphics();
+        graphics.clearRect(0, 0, width, height);
 
+        if(State.getCurrentState() != null){
+            State.getCurrentState().render(graphics);
+        }
+        bufferStrategy.show();
+        graphics.dispose();
     }
 
     private void update() {
-
+        keyManager.update();
+        if(State.getCurrentState() != null){
+            State.getCurrentState().update();
+        }
     }
 
     private void init() {
