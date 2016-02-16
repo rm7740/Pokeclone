@@ -1,6 +1,7 @@
 package my.project.pokeclone;
 
 import my.project.pokeclone.input.KeyManager;
+import my.project.pokeclone.map.GameMap;
 
 public class Handler {
 

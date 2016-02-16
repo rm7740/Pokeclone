@@ -1,6 +1,9 @@
 package my.project.pokeclone.state;
 
 import my.project.pokeclone.Handler;
+import my.project.pokeclone.graphics.Asset;
+import my.project.pokeclone.map.GameMap;
+
 import java.awt.*;
 
 public class GameState extends State{
@@ -17,7 +20,7 @@ public class GameState extends State{
     }
 
     private void loadMaps() {
-        palletTown = new GameMap(handler, "path");
+        palletTown = new GameMap(handler, Asset.palletTown);
     }
 
     @Override
