@@ -4,6 +4,7 @@ import my.project.pokeclone.Handler;
 import my.project.pokeclone.entity.EntityManager;
 import my.project.pokeclone.entity.Player;
 import my.project.pokeclone.util.TextFileLoader;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -33,7 +34,7 @@ public abstract class GameMap {
     }
 
     public void render(Graphics graphics) {
-        graphics.drawImage(bufferedImage, xOffset, yOffset, null, null);
+        graphics.drawImage(bufferedImage, (-handler.getGameCamera().getxOffset()), (-handler.getGameCamera().getyOffset()), null, null);
         entityManager.render(graphics);
     }
 
@@ -58,5 +59,13 @@ public abstract class GameMap {
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public void setxOffset(int xOffset) {
+        this.xOffset = xOffset;
+    }
+
+    public void setyOffset(int yOffset) {
+        this.yOffset = yOffset;
     }
 }
