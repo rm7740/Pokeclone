@@ -55,4 +55,8 @@ public abstract class GameMap {
     public int getCollisionTile(int x, int y) {
         return collisionTiles[x][y];
     }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }
