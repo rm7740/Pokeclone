@@ -13,7 +13,6 @@ public abstract class GameMap {
     protected Handler handler;
     protected int width, height;
     protected BufferedImage bufferedImage;
-    protected int xOffset, yOffset;
     protected EntityManager entityManager;
     protected int[][] collisionTiles;
     protected int horizontalTiles, verticalTiles;
@@ -61,11 +60,11 @@ public abstract class GameMap {
         return entityManager;
     }
 
-    public void setxOffset(int xOffset) {
-        this.xOffset = xOffset;
+    public int getWidth() {
+        return width;
     }
 
-    public void setyOffset(int yOffset) {
-        this.yOffset = yOffset;
+    public int getHeight() {
+        return height;
     }
 }
