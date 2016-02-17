@@ -23,6 +23,10 @@ public class Player extends LiveEntity{
         if (handler.getKeyManager().right) xMove = speed;
     }
 
+    public Rectangle getBounds(int x, int y) {
+        return new Rectangle((x), (y + 16), (width), (height - 16));
+    }
+
     @Override
     public void update() {
         getInput();
