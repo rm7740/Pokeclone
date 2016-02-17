@@ -1,7 +1,6 @@
 package my.project.pokeclone.entity;
 
 import my.project.pokeclone.Handler;
-
 import java.awt.*;
 
 public abstract class LiveEntity extends Entity{
@@ -13,9 +12,7 @@ public abstract class LiveEntity extends Entity{
         super(handler, x, y);
     }
 
-    public Rectangle getBounds(int x, int y) {
-        return new Rectangle((x), (y + 16), (width), (height - 16));
-    }
+    public abstract Rectangle getBounds(int x, int y);
 
     public boolean checkCollisionWithTile(int x, int y) {
         if (handler.getGameMap().getCollisionTile(x, y) == 1) return true;
@@ -48,6 +45,19 @@ public abstract class LiveEntity extends Entity{
         return false;
     }
 
+    public boolean checkEntityCollision() {
+        boolean hasCollided = false;
+        for (Entity entity: handler.getGameMap().getEntityManager().getEntities()) {
+            if (entity == this) {
+                continue;
+            }
+            if (this.getBounds(x, y).intersects(entity.getBounds(entity.getX(), entity.getY()))) {
+                hasCollided = true;
+            }
+        }
+        return hasCollided;
+    }
+
     public void move() {
         moveX();
         moveY();
@@ -56,6 +66,9 @@ public abstract class LiveEntity extends Entity{
     protected void moveY() {
         int previousY = y;
         y += yMove;
+        if (checkEntityCollision()) {
+            y = previousY;
+        }
         if (checkTileCollision()) {
             y = previousY;
         }
@@ -64,6 +77,9 @@ public abstract class LiveEntity extends Entity{
     protected void moveX() {
         int previousX = x;
         x += xMove;
+        if (checkEntityCollision()) {
+            x = previousX;
+        }
         if (checkTileCollision()) {
             x = previousX;
         }
