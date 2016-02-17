@@ -16,7 +16,17 @@ public abstract class Entity {
         this.y = y;
     }
 
+    public abstract Rectangle getBounds(int x, int y);
+
     public abstract void update();
 
     public abstract void render(Graphics graphics);
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
