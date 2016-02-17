@@ -11,9 +11,7 @@ public class Player extends LiveEntity{
         super(handler, x, y);
         width = 16;
         height = 32;
-        speed = 1;
-
-        bounds = new Rectangle(x, y +32, width, height - 32);
+        speed = 2;
     }
 
     public void getInput() {
