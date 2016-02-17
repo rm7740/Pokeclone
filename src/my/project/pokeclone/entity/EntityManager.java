@@ -19,6 +19,10 @@ public class EntityManager {
         entities.add(entity);
     }
 
+    public ArrayList<Entity> getEntities() {
+        return entities;
+    }
+
     public void update(){
         for(int i = 0; i < entities.size(); i++){
             Entity entity = entities.get(i);
