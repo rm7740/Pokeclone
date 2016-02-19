@@ -15,7 +15,7 @@ public class GameState extends State{
 
     public GameState(Handler handler) {
         super(handler);
-        player = new Player(handler, 200, 32);
+        player = new Player(handler, 200, 32, true);
 
         loadMaps();
         currentMap = palletTown;
