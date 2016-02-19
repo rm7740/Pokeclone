@@ -1,5 +1,6 @@
 package my.project.pokeclone;
 
+import my.project.pokeclone.display.GameCamera;
 import my.project.pokeclone.input.KeyManager;
 import my.project.pokeclone.map.GameMap;
 
@@ -22,6 +23,10 @@ public class Handler {
 
     public KeyManager getKeyManager() {
         return gameEngine.getKeyManager();
+    }
+
+    public GameCamera getGameCamera() {
+        return gameEngine.getGameCamera();
     }
 
     public GameMap getGameMap() {
