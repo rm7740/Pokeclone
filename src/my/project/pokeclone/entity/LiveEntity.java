@@ -7,6 +7,8 @@ public abstract class LiveEntity extends Entity{
 
     protected int speed;
     protected int xMove, yMove;
+    protected int lastX = x;
+    protected int lastY = y;
 
     public LiveEntity(Handler handler, int x, int y) {
         super(handler, x, y);
