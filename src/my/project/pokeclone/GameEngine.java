@@ -1,5 +1,6 @@
 package my.project.pokeclone;
 
+import my.project.pokeclone.display.GameCamera;
 import my.project.pokeclone.display.GameWindow;
 import my.project.pokeclone.graphics.Asset;
 import my.project.pokeclone.input.KeyManager;
@@ -21,6 +22,7 @@ public class GameEngine implements Runnable{
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private GameState gameState;
+    private GameCamera gameCamera;
 
     public GameEngine(String title, int width, int height) {
         this.title = title;
@@ -111,6 +113,7 @@ public class GameEngine implements Runnable{
         Asset.init();
         gameState = new GameState(handler);
         State.setCurrentState(gameState);
+        gameCamera = new GameCamera(handler);
     }
 
     public int getWidth() {
@@ -123,5 +126,9 @@ public class GameEngine implements Runnable{
 
     public KeyManager getKeyManager() {
         return keyManager;
+    }
+
+    public GameCamera getGameCamera() {
+        return gameCamera;
     }
 }
