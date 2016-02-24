@@ -13,6 +13,8 @@ public class Player extends LiveEntity{
     private boolean isBoy;
     private boolean facingUp, facingDown, facingLeft, facingRight;
     private BufferedImage currentFrame;
+    private int xTravelCounter = 0;
+    private int yTravelCounter = 0;
 
     public Player(Handler handler, int x, int y, boolean isBoy) {
         super(handler, x, y);
@@ -33,9 +35,16 @@ public class Player extends LiveEntity{
         }
     }
 
+    public Rectangle getBounds(int x, int y) {
+        return new Rectangle((x + 1), (y + 17), (width - 2), (height - 18));
+    }
+
+    public void setTravelVector() {
+        lastX = x;
+        lastY = y;
+    }
+
     public void getInput() {
-        yMove = 0;
-        xMove = 0;
         if (handler.getKeyManager().up) {
             if (facingUp) {
                 yMove = -speed;
@@ -72,16 +81,23 @@ public class Player extends LiveEntity{
                 facingUp = facingDown = facingLeft = false;
             }
         }
+
     }
 
-    public Rectangle getBounds(int x, int y) {
-        return new Rectangle((x), (y + 16), (width), (height - 16));
+    public void stopAfterOneTile(){
+        if (yMove != 0) yTravelCounter++;
+        if (xMove != 0) xTravelCounter++;
+        if (yTravelCounter > 15) {
+            yMove = 0;
+            yTravelCounter = 0;
+        }
+        if (xTravelCounter > 15) {
+            xMove = 0;
+            xTravelCounter = 0;
+        }
     }
 
-    public void setTravelVector() {
-        lastX = x;
-        lastY = y;
-    }
+
 
     public void setAnimationFrame() {
         if (facingUp) {
@@ -106,6 +122,7 @@ public class Player extends LiveEntity{
     public void update() {
         getInput();
         move();
+        stopAfterOneTile();
         setAnimationFrame();
         handler.getGameCamera().centerOnEntity(this);
         setTravelVector();
