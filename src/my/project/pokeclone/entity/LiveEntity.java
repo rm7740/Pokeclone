@@ -60,6 +60,15 @@ public abstract class LiveEntity extends Entity{
         return hasCollided;
     }
 
+    public boolean checkOutOfMap() {
+        bounds = getBounds(x, y);
+        int mapHeight = handler.getGameMap().getHeight();
+        int mapWidth = handler.getGameMap().getWidth();
+        return (bounds.y <= 0 || bounds.x <= 0 || (bounds.y + bounds.height) >= mapHeight
+                || (bounds.x + bounds.width) >= mapWidth);
+
+    }
+
     public void move() {
         moveX();
         moveY();
@@ -68,6 +77,9 @@ public abstract class LiveEntity extends Entity{
     protected void moveY() {
         int previousY = y;
         y += yMove;
+        if (checkOutOfMap()) {
+            y = previousY;
+        }
         if (checkEntityCollision()) {
             y = previousY;
         }
