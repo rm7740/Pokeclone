@@ -15,7 +15,7 @@ public class GameState extends State{
 
     public GameState(Handler handler) {
         super(handler);
-        player = new Player(handler, 200, 32, true);
+        player = new Player(handler, 192, 32, true);
 
         loadMaps();
         currentMap = palletTown;
@@ -35,5 +35,9 @@ public class GameState extends State{
     @Override
     public void render(Graphics graphics) {
         currentMap.render(graphics);
+    }
+
+    public void setCurrentMap(GameMap currentMap) {
+        this.currentMap = currentMap;
     }
 }
