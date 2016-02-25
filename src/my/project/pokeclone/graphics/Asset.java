@@ -13,7 +13,7 @@ public class Asset {
     public static BufferedImage[] heroRight;
 
     public static BufferedImage palletTown;
-    public static BufferedImage heroHouse;
+    public static BufferedImage heroHome1F;
 
     public static SpriteSheet heroHeroine;
     public static SpriteSheet palletTownInteriors;
@@ -23,7 +23,7 @@ public class Asset {
         palletTownInteriors = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town Interiors.png"));
 
         palletTown = ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town.png");
-        heroHouse = palletTownInteriors.crop(186, 5, 192, 144);
+        heroHome1F = palletTownInteriors.crop(186, 5, 192, 144);
 
         heroDown = new  BufferedImage[3];
         heroDown[0] = heroHeroine.crop(24, 24, 16, 32);
