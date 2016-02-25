@@ -131,4 +131,8 @@ public class GameEngine implements Runnable{
     public GameCamera getGameCamera() {
         return gameCamera;
     }
+
+    public GameState getGameState() {
+        return gameState;
+    }
 }
