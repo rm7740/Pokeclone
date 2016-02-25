@@ -27,6 +27,8 @@ public class PalletTown extends GameMap{
     public GameMap getDestinationMap(int marker) {
         GameMap destination = this;
         if (marker == 1) destination = handler.getGameState().getHeroHome1F();
+        if (marker == 2) destination = handler.getGameState().getRivalHome1F();
+        if (marker == 3) destination = handler.getGameState().getOaksLab1F();
         return destination;
     }
 
@@ -36,6 +38,14 @@ public class PalletTown extends GameMap{
         if (marker == 1) {
             position[0] = 48;
             position[1] = 96;
+        }
+        if (marker == 2) {
+            position[0] = 64;
+            position[1] = 96;
+        }
+        if (marker == 3) {
+            position[0] = 96;
+            position[1] = 160;
         }
         return position;
     }
