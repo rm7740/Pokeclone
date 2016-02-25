@@ -27,6 +27,7 @@ public class HeroHome1F extends GameMap{
     @Override
     public GameMap getDestinationMap(int marker) {
         GameMap destination = this;
+        if (marker == 1) destination = handler.getGameState().getHeroHome2F();
         if (marker == 2) destination = handler.getGameState().getPalletTown();
         return destination;
     }
@@ -34,6 +35,10 @@ public class HeroHome1F extends GameMap{
     @Override
     public int[] getDestinationPosition(int marker) {
         int[] position = {0, 0};
+        if (marker == 1) {
+            position[0] = 160;
+            position[1] = 16;
+        }
         if (marker == 2) {
             position[0] = 96;
             position[1] = 112;
