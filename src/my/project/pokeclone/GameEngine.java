@@ -91,6 +91,8 @@ public class GameEngine implements Runnable{
         }
         graphics = bufferStrategy.getDrawGraphics();
         graphics.clearRect(0, 0, width, height);
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0, 0, width, height);
 
         if(State.getCurrentState() != null){
             State.getCurrentState().render(graphics);

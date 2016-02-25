@@ -86,11 +86,15 @@ public abstract class LiveEntity extends Entity{
         if (checkTileCollision()) {
             y = previousY;
         }
+
     }
 
     protected void moveX() {
         int previousX = x;
         x += xMove;
+        if (checkOutOfMap()) {
+            x = previousX;
+        }
         if (checkEntityCollision()) {
             x = previousX;
         }
