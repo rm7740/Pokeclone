@@ -7,17 +7,23 @@ import java.awt.image.BufferedImage;
 
 public class Asset {
 
-    public static BufferedImage palletTown;
     public static BufferedImage[] heroUp;
     public static BufferedImage[] heroDown;
     public static BufferedImage[] heroLeft;
     public static BufferedImage[] heroRight;
 
+    public static BufferedImage palletTown;
+    public static BufferedImage heroHouse;
+
     public static SpriteSheet heroHeroine;
+    public static SpriteSheet palletTownInteriors;
 
     public static void init() {
         heroHeroine = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Hero Heroine.png"));
+        palletTownInteriors = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town Interiors.png"));
+
         palletTown = ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town.png");
+        heroHouse = palletTownInteriors.crop(186, 5, 192, 144);
 
         heroDown = new  BufferedImage[3];
         heroDown[0] = heroHeroine.crop(24, 24, 16, 32);
