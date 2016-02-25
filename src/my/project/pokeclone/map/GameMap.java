@@ -27,7 +27,10 @@ public abstract class GameMap {
         init();
     }
 
-    protected abstract void init();
+    protected void init() {
+        horizontalTiles = width / tileSide;
+        verticalTiles = height / tileSide;
+    }
 
     public void update() {
         entityManager.update();
@@ -39,10 +42,12 @@ public abstract class GameMap {
     }
 
     public void loadCollisionTiles(String path) {
+        collisionTiles = new int[horizontalTiles][verticalTiles];
         loadTiles(collisionTiles, path);
     }
 
     public void loadTeleportTiles(String path) {
+        teleportTiles = new int[horizontalTiles][verticalTiles];
         loadTiles(teleportTiles, path);
     }
 
@@ -50,10 +55,6 @@ public abstract class GameMap {
         String mapFile = TextFileLoader.loadFileAsString(path);
         String[] tokens = mapFile.split("\\s+");
 
-        horizontalTiles = width / tileSide;
-        verticalTiles = height / tileSide;
-
-        collisionTiles = new int[horizontalTiles][verticalTiles];
         for(int y = 0; y < verticalTiles; y++){
             for(int x = 0; x < horizontalTiles; x++){
                 tiles[x][y] = Integer.parseInt(tokens[x + (y * horizontalTiles)]);
