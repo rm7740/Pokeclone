@@ -15,6 +15,7 @@ public abstract class GameMap {
     protected BufferedImage bufferedImage;
     protected EntityManager entityManager;
     protected int[][] collisionTiles;
+    protected int[][] teleportTiles;
     protected int horizontalTiles, verticalTiles;
     protected int tileSide;
     protected Player player;
@@ -38,6 +39,14 @@ public abstract class GameMap {
     }
 
     public void loadCollisionTiles(String path) {
+        loadTiles(collisionTiles, path);
+    }
+
+    public void loadTeleportTiles(String path) {
+        loadTiles(teleportTiles, path);
+    }
+
+    private void loadTiles(int[][] tiles, String path) {
         String mapFile = TextFileLoader.loadFileAsString(path);
         String[] tokens = mapFile.split("\\s+");
 
@@ -47,7 +56,7 @@ public abstract class GameMap {
         collisionTiles = new int[horizontalTiles][verticalTiles];
         for(int y = 0; y < verticalTiles; y++){
             for(int x = 0; x < horizontalTiles; x++){
-                collisionTiles[x][y] = Integer.parseInt(tokens[x + (y * horizontalTiles)]);
+                tiles[x][y] = Integer.parseInt(tokens[x + (y * horizontalTiles)]);
             }
         }
     }
@@ -55,6 +64,14 @@ public abstract class GameMap {
     public int getCollisionTile(int x, int y) {
         return collisionTiles[x][y];
     }
+
+    public int getTeleportTile(int x, int y) {
+        return teleportTiles[x][y];
+    }
+
+    public abstract GameMap getDestinationMap(int marker);
+
+    public abstract int[] getDestinationPosition(int marker);
 
     public EntityManager getEntityManager() {
         return entityManager;
