@@ -115,7 +115,8 @@ public class Player extends LiveEntity{
             handler.setGameMap(destinationMap);
             x = coordinates[0];
             y = coordinates[1];
-
+            xMove = 0;
+            yMove = 0;
         }
     }
 

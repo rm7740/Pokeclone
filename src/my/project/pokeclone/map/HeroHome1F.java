@@ -36,7 +36,7 @@ public class HeroHome1F extends GameMap{
         int[] position = {0, 0};
         if (marker == 2) {
             position[0] = 96;
-            position[1] = 110;
+            position[1] = 112;
         }
         return position;
     }

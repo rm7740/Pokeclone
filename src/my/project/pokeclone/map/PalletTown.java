@@ -35,7 +35,7 @@ public class PalletTown extends GameMap{
         int[] position = {0, 0};
         if (marker == 1) {
             position[0] = 48;
-            position[1] = 111;
+            position[1] = 96;
         }
         return position;
     }
