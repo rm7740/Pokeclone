@@ -3,6 +3,7 @@ package my.project.pokeclone;
 import my.project.pokeclone.display.GameCamera;
 import my.project.pokeclone.input.KeyManager;
 import my.project.pokeclone.map.GameMap;
+import my.project.pokeclone.state.GameState;
 
 public class Handler {
 
@@ -28,6 +29,8 @@ public class Handler {
     public GameCamera getGameCamera() {
         return gameEngine.getGameCamera();
     }
+
+    public GameState getGameState() {return gameEngine.getGameState();}
 
     public GameMap getGameMap() {
         return gameMap;
