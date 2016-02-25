@@ -3,6 +3,7 @@ package my.project.pokeclone.entity;
 import my.project.pokeclone.Handler;
 import my.project.pokeclone.graphics.Animation;
 import my.project.pokeclone.graphics.Asset;
+import my.project.pokeclone.map.GameMap;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -97,7 +98,26 @@ public class Player extends LiveEntity{
         }
     }
 
+    public boolean checkPortalTile() {
+        bounds = getBounds(x, y);
+        int xTileCoordinate = bounds.x / 16;
+        int yTileCoordinate = bounds.y / 16;
+        return (handler.getGameMap().getCollisionTile(xTileCoordinate, yTileCoordinate) == 7);
+    }
 
+    public void teleport() {
+        if (checkPortalTile()) {
+            int xTileCoordinate = bounds.x / 16;
+            int yTileCoordinate = bounds.y / 16;
+            int destination = handler.getGameMap().getTeleportTile(xTileCoordinate, yTileCoordinate);
+            GameMap destinationMap = handler.getGameMap().getDestinationMap(destination);
+            int[] coordinates = handler.getGameMap().getDestinationPosition(destination);
+            handler.setGameMap(destinationMap);
+            x = coordinates[0];
+            y = coordinates[1];
+
+        }
+    }
 
     public void setAnimationFrame() {
         if (facingUp) {
@@ -123,6 +143,7 @@ public class Player extends LiveEntity{
         getInput();
         move();
         stopAfterOneTile();
+        teleport();
         setAnimationFrame();
         handler.getGameCamera().centerOnEntity(this);
         setTravelVector();
