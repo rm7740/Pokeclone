@@ -17,7 +17,7 @@ public class GameState extends State{
 
     public GameState(Handler handler) {
         super(handler);
-        player = new Player(handler, 192, 32, true);
+        player = new Player(handler, 224, 64, true);
 
         loadMaps();
         handler.setGameMap(palletTown);

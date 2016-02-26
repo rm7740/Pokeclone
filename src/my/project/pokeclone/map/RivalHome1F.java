@@ -35,8 +35,8 @@ public class RivalHome1F extends GameMap{
     public int[] getDestinationPosition(int marker) {
         int[] position = {0, 0};
         if (marker == 1) {
-            position[0] = 240;
-            position[1] = 112;
+            position[0] = 304;
+            position[1] = 144;
         }
         return position;
     }

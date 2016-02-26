@@ -36,12 +36,12 @@ public class HeroHome1F extends GameMap{
     public int[] getDestinationPosition(int marker) {
         int[] position = {0, 0};
         if (marker == 1) {
-            position[0] = 160;
+            position[0] = 144;
             position[1] = 16;
         }
         if (marker == 2) {
-            position[0] = 96;
-            position[1] = 112;
+            position[0] = 160;
+            position[1] = 144;
         }
         return position;
     }

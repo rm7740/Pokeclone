@@ -34,8 +34,8 @@ public class OaksLab1F extends GameMap{
     public int[] getDestinationPosition(int marker) {
         int[] position = {0, 0};
         if (marker == 1) {
-            position[0] = 256;
-            position[1] = 208;
+            position[0] = 320;
+            position[1] = 240;
         }
         return position;
     }
