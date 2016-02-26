@@ -11,6 +11,10 @@ public class Asset {
     public static BufferedImage[] heroDown;
     public static BufferedImage[] heroLeft;
     public static BufferedImage[] heroRight;
+    public static BufferedImage momUp;
+    public static BufferedImage momDown;
+    public static BufferedImage momLeft;
+    public static BufferedImage momRight;
 
     public static BufferedImage palletTown;
     public static BufferedImage heroHome1F;
@@ -20,10 +24,12 @@ public class Asset {
 
     public static SpriteSheet heroHeroine;
     public static SpriteSheet palletTownInteriors;
+    public static SpriteSheet npcs;
 
     public static void init() {
         heroHeroine = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Hero Heroine.png"));
         palletTownInteriors = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town Interiors.png"));
+        npcs = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - NPC's.png"));
 
         palletTown = ImageLoader.loadImage("/textures/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town.png");
         heroHome1F = palletTownInteriors.crop(186, 5, 192, 144);
@@ -47,5 +53,9 @@ public class Asset {
         heroRight[0] = ImageFliper.flipHorizontally(heroLeft[0]);
         heroRight[1] = ImageFliper.flipHorizontally(heroLeft[1]);
         heroRight[2] = ImageFliper.flipHorizontally(heroLeft[2]);
+        momUp = npcs.crop(0, 0, 16, 32);
+        momDown = npcs.crop(16, 0, 16, 32);
+        momLeft = npcs.crop(32, 0, 16, 32);
+        momRight = ImageFliper.flipHorizontally(momLeft);
     }
 }
