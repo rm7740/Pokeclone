@@ -83,11 +83,6 @@ public class Player extends LiveEntity{
 
     }
 
-    public void stopAfterOneTile(){
-        if (y % 16 == 0) yMove = 0;
-        if (x % 16 == 0) xMove = 0;
-    }
-
     public boolean checkPortalTile() {
         bounds = getBounds(x, y);
         int xTileCoordinate = bounds.x / 16;
@@ -133,7 +128,6 @@ public class Player extends LiveEntity{
     public void update() {
         getInput();
         move();
-        stopAfterOneTile();
         teleport();
         setAnimationFrame();
         handler.getGameCamera().centerOnEntity(this);

@@ -27,14 +27,14 @@ public abstract class LiveEntity extends Entity{
         int upLeftX = bounds.x / 16;
         int upLeftY = bounds.y / 16;
 
-        int upRightX = (bounds.x + bounds.width) / 16;
+        int upRightX = (bounds.x + bounds.width - 1) / 16;
         int upRightY = bounds.y / 16;
 
         int downLeftX = bounds.x / 16;
-        int downLeftY = (bounds.y + bounds.height) / 16;
+        int downLeftY = (bounds.y + bounds.height - 1) / 16;
 
-        int downRightX = (bounds.x + bounds.width) / 16;
-        int downRightY = (bounds.y + bounds.height) / 16;
+        int downRightX = (bounds.x + bounds.width - 1) / 16;
+        int downRightY = (bounds.y + bounds.height - 1) / 16;
 
         boolean upLeftCollision = checkCollisionWithTile(upLeftX, upLeftY);
         boolean upRightCollision = checkCollisionWithTile(upRightX, upRightY);
@@ -64,8 +64,8 @@ public abstract class LiveEntity extends Entity{
         bounds = getBounds(x, y);
         int mapHeight = handler.getGameMap().getHeight();
         int mapWidth = handler.getGameMap().getWidth();
-        return (bounds.y <= 0 || bounds.x <= 0 || (bounds.y + bounds.height) >= mapHeight
-                || (bounds.x + bounds.width) >= mapWidth);
+        return (bounds.y < 0 || bounds.x < 0 || (bounds.y + bounds.height) > mapHeight
+                || (bounds.x + bounds.width) > mapWidth);
 
     }
 
@@ -86,7 +86,7 @@ public abstract class LiveEntity extends Entity{
         if (checkTileCollision()) {
             y = previousY;
         }
-
+        if (y % 16 == 0) yMove = 0;
     }
 
     protected void moveX() {
@@ -95,11 +95,12 @@ public abstract class LiveEntity extends Entity{
         if (checkOutOfMap()) {
             x = previousX;
         }
-        if (checkEntityCollision()) {
+        else if (checkEntityCollision()) {
             x = previousX;
         }
-        if (checkTileCollision()) {
+        else if (checkTileCollision()) {
             x = previousX;
         }
+        if (x % 16 == 0) xMove = 0;
     }
 }
