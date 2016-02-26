@@ -6,14 +6,11 @@ import my.project.pokeclone.graphics.Asset;
 import my.project.pokeclone.map.GameMap;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Player extends LiveEntity{
 
     private Animation playerUp, playerDown, playerLeft, playerRight;
     private boolean isBoy;
-    private boolean facingUp, facingDown, facingLeft, facingRight;
-    private BufferedImage currentFrame;
 
     public Player(Handler handler, int x, int y, boolean isBoy) {
         super(handler, x, y);
@@ -32,10 +29,6 @@ public class Player extends LiveEntity{
             playerLeft = new Animation(Asset.heroLeft);
             playerRight = new Animation(Asset.heroRight);
         }
-    }
-
-    public Rectangle getBounds(int x, int y) {
-        return new Rectangle((x), (y + 16), (width), (height - 16));
     }
 
     public void setTravelVector() {

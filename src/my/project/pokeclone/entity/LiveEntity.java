@@ -2,6 +2,7 @@ package my.project.pokeclone.entity;
 
 import my.project.pokeclone.Handler;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class LiveEntity extends Entity{
 
@@ -9,12 +10,16 @@ public abstract class LiveEntity extends Entity{
     protected int xMove, yMove;
     protected int lastX = x;
     protected int lastY = y;
+    protected boolean facingUp, facingDown, facingLeft, facingRight;
+    protected BufferedImage currentFrame;
 
     public LiveEntity(Handler handler, int x, int y) {
         super(handler, x, y);
     }
 
-    public abstract Rectangle getBounds(int x, int y);
+    public Rectangle getBounds(int x, int y) {
+        return new Rectangle((x), (y + 16), (width), (height - 16));
+    }
 
     public boolean checkCollisionWithTile(int x, int y) {
         if (handler.getGameMap().getCollisionTile(x, y) == 1) return true;
@@ -103,4 +108,6 @@ public abstract class LiveEntity extends Entity{
         }
         if (x % 16 == 0) xMove = 0;
     }
+
+    public abstract void setAnimationFrame();
 }
