@@ -1,10 +1,13 @@
 package my.project.pokeclone.map;
 
 import my.project.pokeclone.Handler;
+import my.project.pokeclone.entity.Mom;
 import my.project.pokeclone.entity.Player;
 import my.project.pokeclone.graphics.Asset;
 
 public class HeroHome1F extends GameMap{
+
+    private Mom mom;
 
     public HeroHome1F(Handler handler, Player player) {
         super(handler, player);
@@ -20,8 +23,9 @@ public class HeroHome1F extends GameMap{
         loadCollisionTiles("res/map tiles/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town - Hero Home 1F - Tile Map.txt");
         loadTeleportTiles("res/map tiles/Game Boy Advance - Pokemon FireRed LeafGreen - Pallet Town - Hero Home 1F - Teleport Map.txt");
 
+        mom = new Mom(handler, 112, 48);
         entityManager.addEntity(player);
-
+        entityManager.addEntity(mom);
     }
 
     @Override
