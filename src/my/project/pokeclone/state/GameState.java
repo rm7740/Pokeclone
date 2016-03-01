@@ -42,6 +42,10 @@ public class GameState extends State{
         handler.getGameMap().render(graphics);
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public GameMap getPalletTown() {
         return palletTown;
     }
