@@ -18,6 +18,8 @@ public abstract class Entity {
 
     public abstract Rectangle getBounds(int x, int y);
 
+    public abstract void react();
+
     public abstract void update();
 
     public abstract void render(Graphics graphics);

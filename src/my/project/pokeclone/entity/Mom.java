@@ -40,6 +40,26 @@ public class Mom extends LiveEntity{
     }
 
     @Override
+    public void react() {
+        if (handler.getGameState().getPlayer().isFacingUp()) {
+            facingDown = true;
+            facingUp = facingLeft = facingRight = false;
+        }
+        if (handler.getGameState().getPlayer().isFacingDown()) {
+            facingUp = true;
+            facingDown = facingLeft = facingRight = false;
+        }
+        if (handler.getGameState().getPlayer().isFacingLeft()) {
+            facingRight = true;
+            facingUp = facingLeft = facingDown = false;
+        }
+        if (handler.getGameState().getPlayer().isFacingRight()) {
+            facingLeft = true;
+            facingUp = facingDown = facingRight = false;
+        }
+    }
+
+    @Override
     public void update() {
         setAnimationFrame();
     }
