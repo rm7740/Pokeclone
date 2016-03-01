@@ -53,8 +53,8 @@ public class Asset {
         heroRight[0] = ImageFliper.flipHorizontally(heroLeft[0]);
         heroRight[1] = ImageFliper.flipHorizontally(heroLeft[1]);
         heroRight[2] = ImageFliper.flipHorizontally(heroLeft[2]);
-        momUp = npcs.crop(0, 0, 16, 32);
-        momDown = npcs.crop(16, 0, 16, 32);
+        momDown = npcs.crop(0, 0, 16, 32);
+        momUp = npcs.crop(16, 0, 16, 32);
         momLeft = npcs.crop(32, 0, 16, 32);
         momRight = ImageFliper.flipHorizontally(momLeft);
     }
