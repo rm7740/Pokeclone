@@ -73,6 +73,40 @@ public class Player extends LiveEntity{
                 facingUp = facingDown = facingLeft = false;
             }
         }
+        if (handler.getKeyManager().aButton) {
+            interact();
+        }
+    }
+
+    private void interact() {
+        if (facingUp) {
+            handler.getGameMap().getEntityManager().getEntities().stream()
+                                                                 .filter(e -> e.getX() == x)
+                                                                 .filter(e -> e.getY() == y - 16)
+                                                                 .forEach(Entity::react);
+        }
+        if (facingDown) {
+            handler.getGameMap().getEntityManager().getEntities().stream()
+                                                                 .filter(e -> e.getX() == x)
+                                                                 .filter(e -> e.getY() == y + 16)
+                                                                 .forEach(Entity::react);
+        }
+        if (facingLeft) {
+            handler.getGameMap().getEntityManager().getEntities().stream()
+                                                                 .filter(e -> e.getY() == y)
+                                                                 .filter(e -> e.getX() == x - 16)
+                                                                 .forEach(Entity::react);
+        }
+        if (facingLeft) {
+            handler.getGameMap().getEntityManager().getEntities().stream()
+                                                                 .filter(e -> e.getY() == y)
+                                                                 .filter(e -> e.getX() == x + 16)
+                                                                 .forEach(Entity::react);
+        }
+    }
+
+    @Override
+    public void react() {
 
     }
 
