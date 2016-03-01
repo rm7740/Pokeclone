@@ -36,12 +36,11 @@ public class EntityManager {
             Entity entity = entities.get(i);
             entity.update();
         }
-        entities.sort(sortRenderOrder);
     }
 
     public void render(Graphics graphics){
-        for(Entity entity: entities){
-            entity.render(graphics);
-        }
+        entities.stream()
+                .sorted(sortRenderOrder)
+                .forEach(e -> e.render(graphics));
     }
 }
