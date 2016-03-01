@@ -111,6 +111,8 @@ public abstract class LiveEntity extends Entity{
 
     public abstract void setAnimationFrame();
 
+    public abstract void useAI();
+
     public boolean isFacingUp() {
         return facingUp;
     }

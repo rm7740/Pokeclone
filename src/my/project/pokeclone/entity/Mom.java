@@ -40,6 +40,9 @@ public class Mom extends LiveEntity{
     }
 
     @Override
+    public void useAI() {}
+
+    @Override
     public void react() {
         if (handler.getGameState().getPlayer().isFacingUp()) {
             facingDown = true;

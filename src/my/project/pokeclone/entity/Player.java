@@ -105,11 +105,6 @@ public class Player extends LiveEntity{
         }
     }
 
-    @Override
-    public void react() {
-
-    }
-
     public boolean checkPortalTile() {
         bounds = getBounds(x, y);
         int xTileCoordinate = bounds.x / 16;
@@ -165,4 +160,10 @@ public class Player extends LiveEntity{
     public void render(Graphics graphics) {
         graphics.drawImage(currentFrame, (x - handler.getGameCamera().getxOffset()), (y - handler.getGameCamera().getyOffset()), null, null);
     }
+
+    @Override
+    public void react() {}
+
+    @Override
+    public void useAI() {}
 }
