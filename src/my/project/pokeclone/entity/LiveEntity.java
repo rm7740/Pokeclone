@@ -110,4 +110,20 @@ public abstract class LiveEntity extends Entity{
     }
 
     public abstract void setAnimationFrame();
+
+    public boolean isFacingUp() {
+        return facingUp;
+    }
+
+    public boolean isFacingDown() {
+        return facingDown;
+    }
+
+    public boolean isFacingLeft() {
+        return facingLeft;
+    }
+
+    public boolean isFacingRight() {
+        return facingRight;
+    }
 }
